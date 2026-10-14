@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     stages {
-
         stage('Build') {
             steps {
                 sh 'docker build -t minha-app .'
@@ -16,5 +15,11 @@ pipeline {
             }
         }
 
+        stage('Teste') {
+            steps {
+                sh 'sleep 2'
+                sh 'curl --fail http://localhost:8080/'
+            }
+        }
     }
 }
